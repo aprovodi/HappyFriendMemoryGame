@@ -1,5 +1,5 @@
 HappyFriendMemoryGame is an online two-players memory match game, but currently implemented in single mode.
 
-1. set HappyFriendMemoryGame.WpfBrowserApplication as a startup project
+1. set HappyFriendMemoryGame.WpfBrowserApplication as a startup project.
 
-2. Xbap application should work with Internet Explorer
+2. Xbap application should work with Internet Explorer.
