@@ -1,0 +1,34 @@
+﻿<UserControl
+        x:Class="HappyFriendMemoryGame.WpfBrowserApplication.VictoryScreenControl"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+        xmlns:local="clr-namespace:HappyFriendMemoryGame.WpfBrowserApplication"
+        mc:Ignorable="d" 
+        d:DesignHeight="300" d:DesignWidth="300"
+        BorderBrush="#FF000000">
+    <UserControl.Resources>
+        <local:VictoryTimeMessageConverter x:Key="LocalVictoryTimeMessageConverter"/>
+    </UserControl.Resources>
+    <StackPanel>
+        <Border HorizontalAlignment="Center" VerticalAlignment="Center" Background="WhiteSmoke" CornerRadius="10" BorderBrush="RoyalBlue" BorderThickness="5">
+            <Border.Triggers>
+                <EventTrigger RoutedEvent="Rectangle.Loaded">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                            From="1.0" To="0.0" Duration="0:0:5" AutoReverse="True" RepeatBehavior="Forever" />
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Border.Triggers>
+            <StackPanel x:Name="WelcomePanel" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock Text="Winner!" FontSize="30" HorizontalAlignment="Center" Margin="10" FontFamily="Verdana Bold Italic"/>
+                <TextBlock x:Name="TimeSpentTextBlock" Text="{Binding Path=TimeSpent, Converter={StaticResource LocalVictoryTimeMessageConverter}}" HorizontalAlignment="Center" Margin = "10"/>
+                <TextBlock Text="string.Format(Matches missed: {0}, _missedMatches)" HorizontalAlignment="Center" Margin="5"/>
+            </StackPanel>
+        </Border>
+        <Button Content = "Play again!" Margin = "10" Background = "DodgerBlue" Cursor = "Hand" Click="StartGameButton_Click"/>
+    </StackPanel>
+</UserControl>
